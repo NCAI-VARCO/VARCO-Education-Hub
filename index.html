@@ -42,23 +42,33 @@
             gap: 15px;
         }
 
-        /* NC AI 로고 크기 50% 축소 (max-height 기존 40px -> 20px) */
+        /* 링크로 감싸진 로고들 스타일 */
+        .logo-group a {
+             display: flex;
+             align-items: center;
+             gap: 15px;
+             text-decoration: none; /* 링크 밑줄 제거 */
+        }
+
+        /* NC AI 로고 크기 절반으로 축소 (max-height 기존 40px -> 20px) */
         .ncai-logo {
             max-height: 20px; 
             width: auto;
+            cursor: pointer;
         }
 
-        /* VARCO 로고 크기는 그대로 유지 (max-height 40px) */
+        /* VARCO 로고 크기는 기존과 동일하게 유지 */
         .varco-logo {
             max-height: 40px;
             width: auto;
+            cursor: pointer;
         }
 
         /* 텍스트와 링크를 묶는 그룹 (오른쪽 배치) */
         .links-group {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 15px;
             flex-wrap: wrap;
             justify-content: flex-end;
         }
@@ -71,6 +81,7 @@
             letter-spacing: 0.5px;
             display: flex;
             align-items: center;
+            margin-right: 10px; /* 버튼들과 조금 더 가깝게, 하지만 여유 있게 조정 */
             animation: pulse-text 2s infinite;
         }
 
@@ -264,8 +275,10 @@
 
     <nav class="navbar">
         <div class="logo-group">
-            <img src="ncai-logo.png" alt="NC AI 로고" class="ncai-logo">
-            <img src="varco-logo.png" alt="VARCO 로고" class="varco-logo">
+            <a href="https://nc-ai.com/ko" target="_blank" rel="noopener noreferrer">
+                <img src="ncai-logo.png" alt="NC AI 로고" class="ncai-logo">
+                <img src="varco-logo.png" alt="VARCO 로고" class="varco-logo">
+            </a>
         </div>
 
         <div class="links-group">
