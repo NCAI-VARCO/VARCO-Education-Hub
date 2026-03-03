@@ -19,7 +19,7 @@
             line-height: 1.6;
         }
 
-        /* 상단 고정 네비게이션 (로고 및 서비스 링크) */
+        /* 상단 고정 네비게이션 */
         .navbar {
             position: fixed;
             top: 0;
@@ -35,24 +35,35 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
 
-        .logo-and-label {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
+        /* 로고 그룹 (왼쪽 배치) */
         .logo-group {
             display: flex;
             align-items: center;
             gap: 15px;
         }
 
-        .navbar img {
+        /* NC AI 로고 크기 50% 축소 (max-height 기존 40px -> 20px) */
+        .ncai-logo {
+            max-height: 20px; 
+            width: auto;
+        }
+
+        /* VARCO 로고 크기는 그대로 유지 (max-height 40px) */
+        .varco-logo {
             max-height: 40px;
             width: auto;
         }
 
+        /* 텍스트와 링크를 묶는 그룹 (오른쪽 배치) */
+        .links-group {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        /* "서비스 바로 가기" 텍스트 스타일 */
         .nav-label {
             color: #fbbf24;
             font-size: 1.1rem;
@@ -60,7 +71,6 @@
             letter-spacing: 0.5px;
             display: flex;
             align-items: center;
-            gap: 8px;
             animation: pulse-text 2s infinite;
         }
 
@@ -70,11 +80,11 @@
             100% { transform: scale(1); opacity: 0.9; }
         }
 
+        /* 버튼 그룹 컨테이너 */
         .nav-links {
             display: flex;
             gap: 12px;
             flex-wrap: wrap;
-            justify-content: center;
         }
 
         .nav-links a {
@@ -146,7 +156,6 @@
             box-shadow: 0 8px 20px rgba(0,0,0,0.1);
         }
 
-        /* 썸네일 링크 영역 */
         .thumbnail-link {
             position: relative;
             display: block;
@@ -155,15 +164,8 @@
             background-color: #000;
         }
 
-        /* 일반 영상 16:9 비율 */
-        .thumbnail-link.standard {
-            aspect-ratio: 16 / 9;
-        }
-
-        /* 쇼츠 영상 9:16 비율 */
-        .thumbnail-link.shorts {
-            aspect-ratio: 9 / 16;
-        }
+        .thumbnail-link.standard { aspect-ratio: 16 / 9; }
+        .thumbnail-link.shorts { aspect-ratio: 9 / 16; }
 
         .thumbnail-link img {
             width: 100%;
@@ -173,7 +175,6 @@
             display: block;
         }
 
-        /* 재생 버튼 오버레이 */
         .play-overlay {
             position: absolute;
             top: 50%;
@@ -189,17 +190,15 @@
             transition: background-color 0.3s ease, transform 0.3s ease;
         }
 
-        /* 재생 아이콘 (삼각형) */
         .play-overlay::after {
             content: '';
             display: block;
-            margin-left: 5px; /* 삼각형을 시각적 중앙에 맞춤 */
+            margin-left: 5px;
             border-style: solid;
             border-width: 12px 0 12px 20px;
             border-color: transparent transparent transparent #fff;
         }
 
-        /* 썸네일 호버 효과 */
         .thumbnail-link:hover img {
             transform: scale(1.05);
             opacity: 0.8;
@@ -210,7 +209,6 @@
             transform: translate(-50%, -50%) scale(1.1);
         }
 
-        /* 카드 하단 정보 및 버튼 */
         .card-info {
             padding: 20px;
             display: flex;
@@ -245,6 +243,7 @@
         /* 모바일 반응형 */
         @media (max-width: 1024px) {
             .navbar { justify-content: center; }
+            .links-group { justify-content: center; }
         }
 
         @media (max-width: 768px) {
@@ -253,31 +252,30 @@
                 gap: 15px;
                 padding: 15px 10px;
             }
-            .logo-and-label {
-                justify-content: center;
-                width: 100%;
+            .links-group {
+                flex-direction: column;
+                gap: 10px;
             }
-            .logo-group { justify-content: center; }
-            .container { margin-top: 180px; }
+            .container { margin-top: 190px; }
         }
     </style>
 </head>
 <body>
 
     <nav class="navbar">
-        <div class="logo-and-label">
-		<div class="logo-group">
-    			<img src="ncai-logo.png" alt="NC AI 로고">
-   			 <img src="varco-logo.png" alt="VARCO 로고">
-	</div>
-            </div>
-            <div class="nav-label">✨ 서비스 바로 가기</div>
+        <div class="logo-group">
+            <img src="ncai-logo.png" alt="NC AI 로고" class="ncai-logo">
+            <img src="varco-logo.png" alt="VARCO 로고" class="varco-logo">
         </div>
-        <div class="nav-links">
-            <a href="https://3d.varco.ai/" target="_blank">VARCO 3D</a>
-            <a href="https://sound.varco.ai/" target="_blank">VARCO Sound</a>
-            <a href="https://voice.varco.ai/" target="_blank">VARCO Voice</a>
-            <a href="https://translation.varco.ai/" target="_blank">VARCO Translation</a>
+
+        <div class="links-group">
+            <div class="nav-label">✨ 서비스 바로 가기</div>
+            <div class="nav-links">
+                <a href="https://3d.varco.ai/" target="_blank">VARCO 3D</a>
+                <a href="https://sound.varco.ai/" target="_blank">VARCO Sound</a>
+                <a href="https://voice.varco.ai/" target="_blank">VARCO Voice</a>
+                <a href="https://translation.varco.ai/" target="_blank">VARCO Translation</a>
+            </div>
         </div>
     </nav>
 
